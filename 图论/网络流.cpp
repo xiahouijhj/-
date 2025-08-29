@@ -28,7 +28,7 @@ inline int bfs()
 	{
 		int u=q.front();
 		q.pop();
-		for(int i=head[u];i;i=e[i].next)
+		for(int i=head[u];i!=-1;i=e[i].next)
 		{
 			int v=e[i].v;
 			if(dep[v]==0&&e[i].val>0)
@@ -45,7 +45,7 @@ inline int dfs(int u,long long in)
 {
 	long long out=0;
 	if(t==u) return in;
-	for(int i=head[u];i&&in;i=e[i].next)
+	for(int i=head[u];i!=-1&&in;i=e[i].next)
 	{
 		int v=e[i].v;
 		if(e[i].val==0||dep[v]!=dep[u]+1) continue;
@@ -60,16 +60,17 @@ inline int dfs(int u,long long in)
 }
 int main()
 {
-	memset(head,0,sizeof(head));
-	scanf("%d %d %d %d",&n,&m,&s,&t);
+    ios::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+    cin>>n>>m>>s>>t;
+	for(int i=1;i<=m;i++) head[i]=-1;
 	for(int i=1;i<=m;i++)
 	{
 		int u,v,w;
-		scanf("%d %d %d",&u,&v,&w);
+		cin>>u>>v>>w;
 		add(u,v,w);    
 		add(v,u,0);
 	}
-	
 	long long ans=0;
 	while(bfs())
 	{
