@@ -3,11 +3,8 @@ using namespace std;
 // #define int long long
 const int M=6e6,N=300000;
 const int inf=1e9+10;
-const int maxn=1e3+100;
-const int B=100;
-int a[maxn][B];
+const int maxn=1e4+100;
 int cur[maxn];
-int b[B];
 int n,m,s,t;
 struct stu
 {
@@ -21,6 +18,10 @@ inline void add(int u,int v,long long w)
 	e[cnt].v=v;
 	e[cnt].val=w;
 	head[u]=cnt;
+    e[++cnt].next=head[v];
+    e[cnt].v=u;
+    e[cnt].val=0;
+    head[v]=cnt;
 }
 inline bool bfs()
 {
@@ -66,58 +67,13 @@ inline int dfs(int u,long long in)
 	if(out==0) dep[u]=0;
 	return out;
 }
-inline int check(int le)
-{
-    for(int i=1;i+le-1<=m;i++)
-    {
-        int ans=0;
-        s=0;t=n+m+1;
-        memset(head,0,sizeof(head));
-        cnt=1;
-        for(int j=1;j<=n;j++)
-        {
-            add(s,j,1);add(j,s,0);
-        }
-        for(int j=n+1;j<=n+m;j++)
-        {
-            add(j,t,b[j-n]);add(t,j,0);
-        }
-        for(int j=1;j<=n;j++)
-        {
-            for(int k=i;k<=i+le-1;k++) add(j,n+a[j][k],1),add(n+a[j][k],j,0);
-        }
-        for(;(bfs());)
-        {
-            ans+=dfs(s,inf);
-        }
-        if(ans>=n) return true;
-        // cout<<ans<<' '<<
-    }
-    return false;
-}
+int r,c;
+string a[maxn];
+int xj[4];
+int yj[4];
 signed main()
 {
-    ios::sync_with_stdio(false);
+	ios::sync_with_stdio(false);
     cin.tie(0);cout.tie(0);
-    cin>>n>>m;
-    for(int i=1;i<=n;i++)
-    {
-        for(int j=1;j<=m;j++)
-        {
-            cin>>a[i][j];
-        }
-    }
-    for(int i=1;i<=m;i++) cin>>b[i];
-    int l=1,r=m;
-    while(l<r)
-    {
-        int mid=(l+r)>>1;
-        if(check(mid))
-        {
-            r=mid;
-        }
-        else l=mid+1;
-    }
-    cout<<l<<endl;
- } 
+}
  
