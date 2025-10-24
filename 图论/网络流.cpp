@@ -9,27 +9,6 @@ int a[maxn][B];
 int cur[maxn];
 int b[B];
 int n,m,s,t;
-template <class T>
-inline void read(T &x) {
-    x = 0;
-    char c = getchar();
-    bool f = 0;
-    for (; !isdigit(c); c = getchar()) f ^= c == '-';
-    for (; isdigit(c); c = getchar()) x = x * 10 + (c ^ 48);
-    x = f ? -x : x;
-}
-
-template <class T>
-inline void write(T x) {
-    if (x < 0) {
-        putchar('-');
-        x = -x;
-    }
-    T y = 1;
-    int len = 1;
-    for (; y <= x / 10; y *= 10) ++len;
-    for (; len; --len, x %= y, y /= 10) putchar(x / y + 48);
-}
 struct stu
 {
 	int v,next;
@@ -118,18 +97,17 @@ inline int check(int le)
 }
 signed main()
 {
-    read(n);read(m);
-    // ios::sync_with_stdio(false);
-    // cin.tie(0);cout.tie(0);
-    // cin>>n>>m;
+    ios::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+    cin>>n>>m;
     for(int i=1;i<=n;i++)
     {
         for(int j=1;j<=m;j++)
         {
-            read(a[i][j]);
+            cin>>a[i][j];
         }
     }
-    for(int i=1;i<=m;i++) read(b[i]);
+    for(int i=1;i<=m;i++) cin>>b[i];
     int l=1,r=m;
     while(l<r)
     {
@@ -140,6 +118,6 @@ signed main()
         }
         else l=mid+1;
     }
-    write(l);putchar('\n');
+    cout<<l<<endl;
  } 
  
