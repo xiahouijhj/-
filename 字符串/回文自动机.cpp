@@ -6,46 +6,46 @@ int n;
 int cnt=2;
 struct Node
 {
-	int sum;
+	int sum;//以i结尾的回文字符串的个数
 	int len;
-	Node* vis[26];
-	Node* fail;
+	int vis[26];
+	int fail;
 }e[maxn];
-Node* last;
+int last;
 inline void init()
 {
-	e[0].fail=&e[1];e[1].fail=&e[0];
-	for(int i=0;i<26;i++) e[0].vis[i]=e[1].vis[i]=&e[0];
+	e[0].fail=1;e[1].fail=0;
+	for(int i=0;i<26;i++) e[0].vis[i]=e[1].vis[i]=0;
 	e[0].len=0,e[1].len=-1;
 	e[0].sum=e[1].sum=0;
-	last=&e[0];
+	last=0;
 }
-inline Node* New(int len)
+inline int New(int len)
 {
 	e[cnt].len=len;
-	e[cnt].fail=&e[0];
-	for(int i=0;i<26;i++) e[cnt].vis[i]=&e[0];
-	return &e[cnt++];
+	e[cnt].fail=0;
+	for(int i=0;i<26;i++) e[cnt].vis[i]=0;
+	return cnt++;
 }
-inline Node* find(Node *now,int pos)
+inline int find(int now,int pos)
 {
-	while(s[pos]!=s[pos-now->len-1]) now=now->fail;
+	while(s[pos]!=s[pos-e[now].len-1]) now=e[now].fail;
 	return now;
 }
 inline void insert(int pos)
 {
-	Node* cur=find(last,pos);
+	int cur=find(last,pos);
 	// cout<<pos<<' '<<s[pos]<<endl;
 
-	if(cur->vis[s[pos]-'a']==&e[0])
+	if(e[cur].vis[s[pos]-'a']==0)
 	{
-		Node* now=New(cur->len+2);
-		Node* xia=find(cur->fail,pos);
-		now->fail=xia->vis[s[pos]-'a'];
-		now->sum=(xia->vis[s[pos]-'a']->sum)+1;
-		cur->vis[s[pos]-'a']=now;
+		int now=New(e[cur].len+2);
+	    int xia=find(e[cur].fail,pos);
+		e[now].fail=e[xia].vis[s[pos]-'a'];
+		e[now].sum=(e[e[xia].vis[s[pos]-'a']].sum)+1;
+		e[cur].vis[s[pos]-'a']=now;
 	}
-	last=cur->vis[s[pos]-'a'];
+	last=e[cur].vis[s[pos]-'a'];
 }
 int main()
 {
@@ -58,9 +58,6 @@ int main()
 	init();
 	for(int i=1;i<=n;i++)
 	{
-		s[i]=(s[i]-97+k)%26+97;
 		insert(i);
-		k=last->sum;
-		cout<<last->sum<<' ';
 	}
 }
