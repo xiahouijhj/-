@@ -67,10 +67,6 @@ inline int dfs(int u,long long in)
 	if(out==0) dep[u]=0;
 	return out;
 }
-int r,c;
-string a[maxn];
-int xj[4];
-int yj[4];
 signed main()
 {
 	ios::sync_with_stdio(false);
