@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-// #define int long long
-const int M=6e6,N=300000;
+#define int long long
 const int inf=1e9+10;
 const int maxn=1e4+100;
 int cur[maxn];
@@ -10,7 +9,7 @@ struct stu
 {
 	int v,next;
 	long long val;
-}e[M];
+}e[maxn];
 int head[maxn],cnt=1,dep[maxn];
 inline void add(int u,int v,long long w)
 {
