@@ -26,7 +26,7 @@ inline bool bfs()
 {
     for(int i=s;i<=t;i++) cur[i]=head[i];
 	queue<int> q;
-    memset(dep,0,sizeof(dep));
+	for(int i=s;i<=t;i++) dep[i]=0;
 	q.push(s);
 	dep[s]=1;
 	while(!q.empty())
