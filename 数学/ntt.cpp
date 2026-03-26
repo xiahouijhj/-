@@ -3,6 +3,7 @@ using namespace std;
 const int MAXN=3*1e6+10;
 const int mod=998244353,G=3,Gi=332748118;//绝大多数情况下如此
 // mod = 998244353、1004535809、469762049
+// Gi = 332748118, 334845270, 156587350
 int n,m,limit=1,L,r[MAXN];
 long long a[MAXN],b[MAXN];
 long long fastpow(long long a, long long k)
