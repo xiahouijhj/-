@@ -51,6 +51,7 @@ inline void fft(com *A,int j)
 }
 int main()
 {
+    limit=1;
 	int n,m;
 	cin>>n>>m;
 	for(int i=0;i<=n;i++) a[i].x=read();
