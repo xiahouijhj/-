@@ -66,3 +66,48 @@ inline void insert(int &now,int l,int r,int L,int R,int id)
         insert(t[now].r,mid+1,r,L,R,id);
     }
 }
+signed main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+    memset(t,0,sizeof(t));
+    memset(k,0,sizeof(k));
+    memset(b,0,sizeof(b));
+    int n;
+    cin>>n;
+    int lastans=0;
+    int d=0;
+    for(int i=1;i<=n;i++)
+    {
+        int op;
+        cin>>op;
+        if(op==0)
+        {
+            int k;
+            cin>>k;
+            lastans=query(d,1,mod1,(k+lastans-1)%mod1+1);
+            cout<<lastans<<endl;
+        }
+        else
+        {
+            int x0,y0,x1,y1;
+            cin>>x0>>y0>>x1>>y1;
+            x0=(x0+lastans-1)%mod1+1;
+            x1=(x1+lastans-1)%mod1+1;
+            y0=(y0+lastans-1)%mod2+1;
+            y1=(y1+lastans-1)%mod2+1;
+            if(x0>x1)
+            {
+                swap(x0,x1);
+                swap(y0,y1);
+            }
+            if(x0!=x1) k[cn]=1.0*(y1-y0)/(x1-x0);
+            else k[cn]=0,y0=max(y0,y1);
+            b[cn]=y0*1.0-x0*k[cn];
+            insert(d,1,mod1,min(x0,x1),max(x1,x0),cn);
+            cn++;
+        }
+    }
+    // cout<<cmp(1,2,2)<<endl;
+    return 0;
+}
