@@ -1,12 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-const int maxn=203;
 const int inf=1e9+10;
 const int M=1e7+10,N=1e7+10;
 int n,m,s,t;
-int a[maxn][maxn];
-int b[maxn][maxn];
 struct stu
 {
 	int v,next,w;
