@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define int long long
 const int inf=1e9+10;
-const int maxn=1e4+100;
+const int maxn=1e6+100;
 int cur[maxn];
 int n,m,s,t;
 struct stu
