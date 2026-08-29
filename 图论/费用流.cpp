@@ -3,7 +3,6 @@ using namespace std;
 #define int long long
 const int inf=1e9+10;
 const int M=1e7+10,N=1e7+10;
-int n,m,s,t;
 struct stu
 {
 	int v,next,w;
@@ -12,6 +11,7 @@ struct stu
 int cur[N];
 int head[N],cnt=1,dis[N],vis[N];
 int mia=0;
+int n,m,s,t;
 inline void add(int u,int v,int w,int ww)
 {
 	e[++cnt].next=head[u];
@@ -40,7 +40,7 @@ inline int bfs()
 		// cout<<u<<endl;
 		q.pop();
 		vis[u]=0;
-		for(int i=head[u];i!=-1;i=e[i].next)
+		for(int i=head[u];i!=0;i=e[i].next)
 		{
             int v=e[i].v;
 			if(dis[u]+e[i].w<dis[v]&&e[i].val>0)
@@ -63,7 +63,7 @@ inline int dfs(int u,int in)
 	long long out=0;
 	if(t==u) return in;
 	vis[u]=1;
-	for(int i=cur[u];i!=-1&&in;i=e[i].next)
+	for(int i=cur[u];i!=0&&in;i=e[i].next)
 	{
         cur[u]=i;
 		int v=e[i].v;
