@@ -118,8 +118,9 @@ signed main()
         // cout<<1<<endl;
         dfs(s,inf);
     }
+    ans=e[cnt].val;
     // cout<<1<<endl;
-    // e[cnt].val=e[cnt-1].val=0;
+    e[cnt].val=e[cnt-1].val=0;
     s=S;
     t=T;
     while(bfs())
