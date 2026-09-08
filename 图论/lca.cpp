@@ -1,3 +1,13 @@
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
+//fat一定要清空
 #include<bits/stdc++.h>
 using namespace std;
 const int M=500010;
@@ -7,7 +17,7 @@ struct ben
 	int u,v,w,next;
 }e[M<<1];
 int head[M],dep[M];
-int fat[M][64];
+int fat[M][32];
 int cnt=1;
 inline void add(int u,int v)
 {
@@ -57,7 +67,8 @@ int main()
 		add(v,u);
 	}
 	lg[0]=0;
-	for(int i=1;i<=M;i++)
+	for(int i=1;i<=n;i++) for(int j=0;j<=30;j++) fat[i][j]=0;
+	for(int i=1;i<M;i++)
 	{
 		lg[i]=lg[i-1]+(1<<lg[i-1]==i);
 	}
