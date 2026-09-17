@@ -32,6 +32,7 @@ void del(int x){
 void dfs0(int u){
 	int v;
 	siz[u]=1;
+	son[u]=0;
 	for(int i=head[u];i;i=e[i].next){
 		v=e[i].to;
 		dfs0(v);
