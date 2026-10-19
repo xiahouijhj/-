@@ -11,10 +11,10 @@ int main()
 	//cout<<len; 
 	for(int i=0;i<len;i++)
 	{
-		s[i*2]='#';
-		s[i*2+1]=a[i];
+		s+='#';
+		s+=a[i];
 	}
-	s[len*2]='#';
+	s+='#';
 	int r=0,mid=0,num=0;
 	for(int i=0;i<len*2-1;i++)
 	{
